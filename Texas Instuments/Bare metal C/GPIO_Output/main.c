@@ -9,15 +9,16 @@ void delayMs( int ms );
 
 int main() 
 {
+	int delayTime = 1000;
 	SYSCTL->RCGCGPIO |= 0x20;		// 0B 0010 0000	: Enable Clock access to PortF
 	GPIOF->DIR |= 0x02;		// 0B 0000 0010		SET RED LED as OUTPUT
 	GPIOF->DEN |= 0x02;		// Set Pin1 digital
 		while(1)
 		{
 			GPIOF->DATA |= 0x02;	// Set Pin1 High
-			delayMs(100);
+			delayMs(delayTime);
 			GPIOF->DATA &=~0x02;	// Set Pin1 Low
-			delayMs(100);			
+			delayMs(delayTime);			
 		}
 }
 
